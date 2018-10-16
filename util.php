@@ -1,24 +1,19 @@
 <?php
     class Util
     {
-        function anagram()
+        function anagram($ar1,$ar2)
         {
-            echo "enter word\n";
-            $ar1 = str_split(trim(fgets(STDIN)),1);
-            echo "enter other word\n";
-            $ar2 = str_split(trim(fgets(STDIN)),1);
-    
+            
             if(sizeof($ar1 == $ar2))
             {
                 foreach($ar1 as $del)
                 {
                     $index = array_search($del,$ar2);
-                    if($index != false)
+                    if($index !== false)
                     {
                         unset($ar2[$index]);
                     }              
                 }
-                
                 if (sizeof($ar2) == 0) 
                 {
                     echo "anagram\n";
@@ -94,8 +89,8 @@
                 return false;
             
         }
-    }
-    
+
+    }   
     
     
 ?>
