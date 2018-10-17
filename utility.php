@@ -85,7 +85,40 @@
 
            return fread($fileC, filesize($file));
        }
+
+       static function temperaturConversion($temp)
+       {
+           $n = (int)substr($temp,0,strlen($temp)-1);
+           echo $n."\n";
+           if(strpos($temp,"F")==true || strpos($temp,"f")==true)
+           {
+               echo (($n - 32) *(5 / 9))."c";
+
+           }
+           elseif (strpos($temp,"C")==true || strpos($temp,"c")==true) {
+               echo (($n * 9 / 5) + 32)."f";
+           }
+       }
+
+       static function monthlyPayment($P,$Y,$R)
+       {
+            $n = 12 * $Y;
+            $r = $R / (12 * 100);
+            $pri = $P * $r / (1 - ((1 + $r)**(-$n)));
+            echo $pri." Rs\n";        
+       }
+
+       static function sqrt($c)
+       {
+            $t = $c;
+            $epsilon = 1e-15;
+            while (abs($t - $c / $t) > $epsilon * $t) {
+                $t = (($c / $t) + $t) / 2;
+            }
+       }
+
     }
+    //utility::temperaturConversion(5000,2,5);
 
     
 ?>
