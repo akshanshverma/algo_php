@@ -1,35 +1,55 @@
 <?php
+
     class Util
     {
-        function anagram($ar1,$ar2)
+        /**
+         * funtion anagram is to check all the element of string are same or not
+         * 
+         * @param string $str1 is or word
+         * @param string $str2 is other word to check anagram
+         * @return boolean true of flase
+         */
+        function anagram($str1,$str2)
         {
+            //convert both string into array
+            $ar1 = str_split($str1,1);
+            $ar2 = str_split($str2,1);
             
-            if(sizeof($ar1 == $ar2))
+            //for anagram size of both string should equal
+            if(sizeof($ar1) == sizeof($ar2))
             {
+                //forEach to access the value of $ar1 one by one
                 foreach($ar1 as $del)
                 {
+                    //check the value in other array and save index
                     $index = array_search($del,$ar2);
+                    //if value is present then it will remove that value from 2nd array
                     if($index !== false)
                     {
                         unset($ar2[$index]);
                     }              
                 }
+                //after foreach if size is zero then word is anagra else not anagram
                 if (sizeof($ar2) == 0) 
                 {
-                    echo "anagram\n";
+                    return true;
                 } 
                 else 
                 {
-                    echo "nop\n";
+                    return false;
                 }
             }
             else
             {
-                echo "nop\n";
+                return false;
             }
             
         }
 
+        /**
+         * function to print prime number between 0 to 1000
+         * @return array $arr array of prime number 0 to 1000
+         */
         function primeNumber()
         {
             $arr = array();
@@ -54,7 +74,7 @@
                 * if number is divisible by only one and itself the it will add to ArrayList
                 */
                 if ($b == true) {
-                    $arr[$index++] = $i;
+                    $arr[$index++] = (string)$i;
                     //echo $i."\n";
                 }
             }  
@@ -70,27 +90,58 @@
         function palindrome($n)
         {
                 
-                if($n > 9)
+            if($n > 9)
+            {
+                //split into array 
+                $tempArr = str_split($n);
+                //temp to store last index
+                $temp = sizeof($tempArr)-1;
+                //echo $temp."\n";
+                for($j = 0; $j < sizeof($tempArr)/2; $j++)
                 {
-                    $tempArr = str_split($n);
-                    $temp = sizeof($tempArr)-1;
-                    echo $temp."\n";
-                    for($j = 0; $j < sizeof($tempArr)/2; $j++)
-                    {
-                        echo $tempArr[$j]."=".$tempArr[$temp]."\n";
-                        if($tempArr[$j] != $tempArr[$temp])
-                        {   echo "<<"."\n";
-                            return false;
-                        }
-                        $temp--;
+                    //echo $tempArr[$j]."=".$tempArr[$temp]."\n";
+                    //if the values are not same then it will return false 
+                    if($tempArr[$j] != $tempArr[$temp])
+                    {   //echo "<<"."\n";
+                        return false;
                     }
-                    return true;
+                    $temp--;
                 }
-                return false;
-            
+                //other wise true
+                return true;
+            }
+            return false;            
         }
 
+        /**
+         * function main to perform the action with the help of anagram primeNumber palindrome
+         */
+        function main()
+        {
+            //get all the prime number 0 to 1000 and save it into array 
+            $arr = Util::primeNumber();
+            
+            echo "anagram\n";
+            //check all the anagram number of prime numbers
+            for ($i=0; $i < sizeof($arr) ; $i++) 
+            { 
+                for ($j=$i+1; $j < sizeof($arr) ; $j++) 
+                {
+                    if (Util::anagram($arr[$i],$arr[$j])) {
+                        echo $arr[$i]." ".$arr[$j]."\n";
+                    }
+                }
+            }
+
+            echo "\npalindrome\n";
+            //check number are palindrome or not
+            for ($i=0; $i < sizeof($arr); $i++) { 
+                if (Util::palindrome((int)$arr[$i])) {
+                    echo $arr[$i]."\n";
+                }
+            }
+        }
     }   
-    
+    Util::main();
     
 ?>

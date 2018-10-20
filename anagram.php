@@ -1,8 +1,14 @@
 <?php
+    /**
+     * to get input of two word which we want to check anagrams
+     */
     require("util.php");
     echo "enter word\n";
-    $ar1 = str_split(trim(fgets(STDIN)),1);
+    //1st word
+    $str1 = trim(fgets(STDIN));
     echo "enter other word\n";
-    $ar2 = str_split(trim(fgets(STDIN)),1);
-    Util::anagram($ar1,$ar2);
+    //2nd word
+    $str2 = trim(fgets(STDIN));
+    //call anagram function
+    Util::anagram($str1,$str2);
 ?>

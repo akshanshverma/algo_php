@@ -1,4 +1,5 @@
 <?php
+    //get user input of principal percent and year
     require("utility.php");
     echo "enter principal loan amount\n";
     $p = utility::getInt();
@@ -6,6 +7,6 @@
     $r = utility::getInt();
     echo "enter years\n";
     $y = utility::getInt();
-
+    //call function monthlyPayment
     $p = utility::monthlyPayment($p,$y,$r);
 ?>
