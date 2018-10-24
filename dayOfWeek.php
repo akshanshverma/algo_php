@@ -6,16 +6,14 @@
      *  @version 1.0
      *  @since   18-10-2018
      */
-    class DayOfWeek
-    {
-        function printDay($d,$m,$y)
-        {
-            $y0 = ($y - floor((14 - $m) / 12))-1;
-            $x = $y0 + floor($y0/4) - floor($y0/100) + floor($y0/400);
-            $m0 = $m + 12 * floor((14 - $m) / 12) - 2;
-            $d0 = ($d + $x + 31*floor($m0 / 12)) % 7;
-            echo $d0."\n";
-        }
-    }
-    DayOfWeek::printDay(1,4,2017);
+    
+    require ("utility.php");
+    echo "enter day\n";
+    $d = Utility::getInt();
+    echo "enter month\n";
+    $m = Utility::getInt();
+    echo "enter year\n";
+    $y = Utility::getInt(); 
+    $arr = array("sun","mon","tue","wed","thu","fri","sat");
+    echo $arr[Utility::printDay($d,$m,$y)];
 ?>

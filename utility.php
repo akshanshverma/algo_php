@@ -183,6 +183,15 @@
                 }
         }
 
+        function printDay($d,$m,$y)
+        {
+            $y0 = floor($y - (14 - $m) / 12)+1;
+            $x = floor($y0 + $y0/4 - $y0/100 + $y0/400);
+            $m0 = $m + 12 * floor((14 - $m) / 12) - 2;
+            $d0 = floor(($d + $x + floor((31*$m0) / 12)) % 7);
+            return $d0;
+        }
+
     }
     //utility::temperaturConversion(5000,2,5);
 

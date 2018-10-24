@@ -10,5 +10,9 @@
     //2nd word
     $str2 = trim(fgets(STDIN));
     //call anagram function
-    Util::anagram($str1,$str2);
+    if (Util::anagram($str1,$str2)) {
+        echo "yes\n";
+    } else {
+        echo "no\n";
+    }
 ?>
