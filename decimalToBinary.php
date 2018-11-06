@@ -40,8 +40,8 @@
             return $st;
         }
     }
-    /*echo "enter number to convert\n";
+    echo "enter number to convert\n";
     $num = utility::getInt();
-    DecimalToBinary::toBinary($num); */
+    echo DecimalToBinary::toBinary($num)."\n";
     
 ?>

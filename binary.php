@@ -88,10 +88,13 @@
     echo "enter int value\n";
     //get binary number 
     $binary = DecimalToBinary::toBinary(Utility::getInt());
+    echo $binary."\n";
     //swap the binary number
     $swapBinary = Binary::swap($binary);
+    echo $swapBinary."\n";
     //convert binary number to decimal number
     $decimal = Binary::toDecimal((int)$swapBinary);
+    echo $decimal."\n";
     //check it is power of two or not 
     Binary::powerOfTwo($decimal);
 ?>
